@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr3dn32b2u77i"]
+
+[ext_resource type="Script" path="res://addons/stupid_files/stupidfilesautoload.gd" id="1_pblia"]
+
+[node name="StupidFiles" type="Node"]
+script = ExtResource("1_pblia")

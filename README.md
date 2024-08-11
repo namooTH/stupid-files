@@ -1,8 +1,9 @@
 # stupid-files
 a godot file system written in gdscript with concussion productions games in mind.
 
-## how it works
-coming soon
+## how to use
+clone the addon folder and put in on your project.
+read the example.gd for functions to use
 
 ## features
 - store files in hash to prevent duplicates

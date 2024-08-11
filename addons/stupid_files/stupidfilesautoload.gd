@@ -2,13 +2,19 @@ extends Node
 
 var saveData = {}
 func get_data(cag: String, item: String):
-	var file = FileAccess.open("user://stupidfile/%s/%s" % [cag.sha256_text(), item.sha256_text()], FileAccess.READ)
+	var path = "stupidfile/%s/%s" % [cag.sha256_text(), item.sha256_text()]
+	if not check_file(path):
+		return null
+	var file = FileAccess.open("user://%s" % path, FileAccess.READ)
 	return str_to_var(gzip_decode(file.get_buffer(file.get_length())))
 func store(cag: String, item: String, content):
 	var dir = setup_cag(cag)
 	content = var_to_str(content)
 	save_to_file(dir + item.sha256_text(), gzip_encode(content))
-func delete(cag: String, item: String = ""):	
+func delete(cag: String, item: String):
+	var path = "stupidfile/%s/%s" % [cag.sha256_text(), item.sha256_text()]
+	if not check_file(path):
+		return null
 	delete_file("user://stupidfile/%s" % cag.sha256_text(), item.sha256_text())
 
 func setup_file_system():
@@ -23,6 +29,9 @@ func setup_cag(cag: String):
 		dir.make_dir(cag.sha256_text())
 	return "user://stupidfile/%s/" % cag.sha256_text()
 	
+func check_file(path: String):
+	var dir = DirAccess.open("user://")
+	return dir.file_exists(path)
 func delete_file(path: String, file: String):
 	var dir = DirAccess.open(path)
 	dir.remove(file)

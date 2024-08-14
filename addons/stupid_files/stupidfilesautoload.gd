@@ -9,8 +9,7 @@ func get_data(cag: String, item: String):
 	return str_to_var(gzip_decode(file.get_buffer(file.get_length())))
 func store(cag: String, item: String, content):
 	var dir = setup_cag(cag)
-	content = var_to_str(content)
-	save_to_file(dir + item.sha256_text(), gzip_encode(content))
+	save_to_file(dir + item.sha256_text(), gzip_encode(var_to_str(content)))
 func delete(cag: String, item: String):
 	var path = "stupidfile/%s/%s" % [cag.sha256_text(), item.sha256_text()]
 	if not check_file(path):

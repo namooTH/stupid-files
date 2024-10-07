@@ -8,7 +8,7 @@ a database written in gdscript for the godot engine.
 
 ## How to use
 clone the addon folder and put in on your project.
-(example)[example.gd]
+[example](example.gd)
 ```gdscript
 extends Node
 

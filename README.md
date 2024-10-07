@@ -7,7 +7,8 @@ a database written in gdscript for the godot engine.
 - compresses all the file using gzip to reduce storage usage
 
 ## How to use
-clone the addon folder and put in on your project.
+clone the addon folder and put in your project.
+
 [example](example.gd)
 ```gdscript
 extends Node
